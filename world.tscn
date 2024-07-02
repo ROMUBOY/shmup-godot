@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://sw0f62xork2d"]
+[gd_scene load_steps=3 format=3 uid="uid://sw0f62xork2d"]
 
 [ext_resource type="PackedScene" uid="uid://b22he16xqroan" path="res://player_ship/ship.tscn" id="1_l8pf5"]
+[ext_resource type="PackedScene" uid="uid://625ah5chta7v" path="res://effects/parallax_background.tscn" id="2_afk1p"]
 
 [node name="World" type="Node2D"]
 
 [node name="ship" parent="." instance=ExtResource("1_l8pf5")]
 position = Vector2(80, 216)
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_afk1p")]
