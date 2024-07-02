@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cek704auppdrr"]
+
+[ext_resource type="PackedScene" uid="uid://dgce6s61tbsqk" path="res://enemies/enemy.tscn" id="1_7ljdx"]
+[ext_resource type="Texture2D" uid="uid://dbr5djjnklyv2" path="res://assets/green_enemy.png" id="2_42ux3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri5fy"]
+atlas = ExtResource("2_42ux3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8gv4"]
+atlas = ExtResource("2_42ux3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0olwg"]
+atlas = ExtResource("2_42ux3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3xyhl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ri5fy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8gv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0olwg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GreenEnemy" instance=ExtResource("1_7ljdx")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_3xyhl")
+autoplay = "default"
+frame_progress = 0.714918
+
+[node name="MoveComponent" parent="." index="2"]
+velocity = Vector2(0, 40)
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="3"]
+scale = Vector2(0.8, 0.75)
