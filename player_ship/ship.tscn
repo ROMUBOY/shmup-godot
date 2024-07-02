@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://b22he16xqroan"]
+[gd_scene load_steps=14 format=3 uid="uid://b22he16xqroan"]
 
+[ext_resource type="Script" path="res://player_ship/ship.gd" id="1_7tc1w"]
 [ext_resource type="Texture2D" uid="uid://byuug4pls28me" path="res://assets/ship.png" id="1_ulott"]
 [ext_resource type="Script" path="res://components/move_component.gd" id="2_sp8vx"]
 [ext_resource type="Script" path="res://components/move_input_component.gd" id="3_124fm"]
 [ext_resource type="Resource" uid="uid://blqe4tux2eo4k" path="res://player_ship/ship_move_stats.tres" id="4_cj8n0"]
 [ext_resource type="Script" path="res://components/position_clamp_component.gd" id="5_t2tha"]
+[ext_resource type="Script" path="res://components/spawner_component.gd" id="7_qcqjl"]
+[ext_resource type="PackedScene" uid="uid://bx011ktcgtdup" path="res://projectiles/laser.tscn" id="8_5ionu"]
+[ext_resource type="Script" path="res://components/scale_component.gd" id="9_5rqed"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myqoj"]
 atlas = ExtResource("1_ulott")
@@ -46,6 +50,7 @@ animations = [{
 }]
 
 [node name="ship" type="Node2D"]
+script = ExtResource("1_7tc1w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fttyu")
@@ -64,3 +69,21 @@ move_component = NodePath("../MoveComponent")
 [node name="PositionClampComponent" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("5_t2tha")
 actor = NodePath("..")
+
+[node name="LeftMuzzle" type="Marker2D" parent="."]
+position = Vector2(-5, -4)
+
+[node name="RightMuzzle" type="Marker2D" parent="."]
+position = Vector2(5, -4)
+
+[node name="SpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("7_qcqjl")
+scene = ExtResource("8_5ionu")
+
+[node name="FireRateTimer" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
+
+[node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("9_5rqed")
+sprite = NodePath("../AnimatedSprite2D")
