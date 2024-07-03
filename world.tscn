@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://sw0f62xork2d"]
+[gd_scene load_steps=7 format=3 uid="uid://sw0f62xork2d"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_hyon5"]
 [ext_resource type="PackedScene" uid="uid://b22he16xqroan" path="res://player_ship/ship.tscn" id="1_l8pf5"]
 [ext_resource type="PackedScene" uid="uid://625ah5chta7v" path="res://effects/parallax_background.tscn" id="2_afk1p"]
+[ext_resource type="Resource" uid="uid://dhvruc5grlpg2" path="res://game_stats.tres" id="2_okru2"]
 [ext_resource type="PackedScene" uid="uid://8g10h368hkv3" path="res://enemies/enemy_generator.tscn" id="3_6lfps"]
+[ext_resource type="LabelSettings" uid="uid://dy25c24vdakhq" path="res://fonts/default_label_settings.tres" id="5_pew03"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_hyon5")
+game_stats = ExtResource("2_okru2")
 
 [node name="ship" parent="." instance=ExtResource("1_l8pf5")]
 position = Vector2(80, 216)
@@ -14,3 +17,11 @@ position = Vector2(80, 216)
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_afk1p")]
 
 [node name="EnemyGenerator" parent="." instance=ExtResource("3_6lfps")]
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_right = 160.0
+offset_bottom = 23.0
+text = "Score"
+label_settings = ExtResource("5_pew03")
+horizontal_alignment = 1
+vertical_alignment = 1
