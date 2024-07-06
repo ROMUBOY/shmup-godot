@@ -8,12 +8,14 @@ extends Node2D
 @onready var animated_sprite_2d = $Anchor/AnimatedSprite2D
 @onready var move_component : MoveComponent = $MoveComponent as MoveComponent
 @onready var flame_animated_sprite = $Anchor/FlameAnimatedSprite
+@onready var variable_pitch_audio_stream_player = $VariablePitchAudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	fire_rate_timer.timeout.connect(fire_laser)
 
 func fire_laser() -> void:
+	variable_pitch_audio_stream_player.play_with_variance()
 	laser_spawner_component.spawn(left_muzzle.global_position)
 	laser_spawner_component.spawn(right_muzzle.global_position)
 	scale_component.tween_scale()
